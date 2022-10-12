@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-service
+  labels:
+    app: notification-service
+  namespace: cscp-loms-nt-cmf-mesh
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notification-service
+  template:
+    metadata:
+      labels:
+        app: notification-service
+    spec:
+      containers:
+        - image: harbor.onedev.neustar.biz/cs-loms-nonprod/notification-service:1
+#          imagePullPolicy: Always
+          name: inventory-service
+#      imagePullSecrets:
+#      - name: docker-secret
